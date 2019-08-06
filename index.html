@@ -108,10 +108,11 @@
                         <div id="image" class="flex  justify-center">
                             <a v-if="event.event_url" v-bind:href="event.event_url" target="_blank"
                                 class="p-0 m-0 text-center flex  justify-center">
-                                <img :src="event.event_image" alt="" style="height:auto;width:95%; max-height:700 px;">
+                                <img :src="event.event_image" alt=""
+                                    style="max-width:500px; max-height:700 px; height:auto; max-height: 550px;">
                             </a>
                             <img v-else :src="event.event_image" alt=""
-                                style="height:auto;width:95%; max-height:700 px;">
+                                style="max-width:500px; max-height:700 px; height:auto; max-height: 550px;">
                         </div>
                     </div>
 
