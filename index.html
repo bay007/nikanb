@@ -1,0 +1,567 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <meta property="og:url" content="https://nikanbeat.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nikanbeat" />
+    <meta property="og:description" content="Alternativa para alternativos." />
+    <meta property="og:image" content="otg.jpg" />
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+        integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        background: rgb(37, 11, 84);
+        background: linear-gradient(90deg, rgb(0, 90, 147) 0%, rgba(17, 6, 35, 0.9164040616246498) 50%, rgba(37, 11, 84, 1) 100%);
+        background-size: 250vh;
+    }
+
+    body>* {
+        font-family: 'Blinker';
+    }
+
+    /* div {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(79, 236, 92);
+    } */
+
+    img {
+        -webkit-box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
+        -moz-box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
+        box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
+    }
+</style>
+
+<body class="text-white  flex flex-col  text-white gradient">
+    <!--Nav-->
+    <nav id="header" class="fixed w-full z-30 top-0 text-white">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+
+            <div class="pl-4 flex items-center">
+                <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                    href="#header">
+                    Nikanbeat
+                </a>
+            </div>
+
+            <div class="block lg:hidden pr-4">
+                <button id="nav-toggle"
+                    class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+                id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <!-- <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-red-500 font-bold no-underline" href="#">Active</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-red-500 no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#">link</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-red-500 no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#">link</a>
+                    </li> -->
+                </ul>
+                <button id="navAction"
+                    class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-95">Conócenos</button>
+            </div>
+        </div>
+
+        <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+    </nav>
+    <section class="text-center  w-full md:w-2/3 md:ml-auto md:mr-auto mt-24 md:mt-40 mb-2">
+        <h1 style="font-family: 'Abril Fatface', cursive;font-size: 1.75rem;">
+            Somos un canal de promoción para bandas alternaticas, manejamos mas de 40 bandas actualmente.
+        </h1>
+    </section>
+    <section id="slider" class="bg-whitecarousel w-full mt-5 md:mt-10 mb-32">
+        <slider inline-template>
+            <div class="flex flex-row sm:items-center content-around" @mouseover="clear_interval"
+                @mouseleave="set_interval">
+                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/6 md:w-2/12 text-right text-red-600 text-6xl"
+                    @click="to_left">
+                    <i class="zmdi zmdi-chevron-left"></i>
+                </div>
+
+                <span :key="index" v-for="event,index in my_events" v-show="current_event==index" id="carousel__cell"
+                    class="flex flex-col  justify-center  w-4/6 md:w-8/12  ">
+                    <div id="image" class="flex flex-row justify-center  w-full animated zoomIn fast">
+                        <div id="image" class="flex  justify-center">
+                            <a v-if="event.event_url" v-bind:href="event.event_url" target="_blank"
+                                class="p-0 m-0 text-center flex  justify-center">
+                                <img :src="event.event_image" alt="" style="height:auto;width:95%; max-height:700 px;">
+                            </a>
+                            <img v-else :src="event.event_image" alt=""
+                                style="height:auto;width:95%; max-height:700 px;">
+                        </div>
+                    </div>
+
+                    <div id="description" class="mt-5 md:mt-10 w-full text-center text-2xl animated flipInX faster">
+                        <p v-show="event.title">{{event.title}}</p>
+                        <a v-if="event.event_url" v-bind:href="event.event_url" target="_blank"
+                            class="p-0 m-0 text-center flex  justify-center">
+                            {{event.description}}
+                        </a>
+                        <p v-else>
+                            {{event.description}}
+                        </p>
+                    </div>
+                </span>
+
+                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/6 md:w-2/12 text-left  text-red-600 text-6xl"
+                    @click="to_right">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </div>
+            </div>
+        </slider>
+    </section>
+
+    <div class="relative -mt-12 lg:-mt-24">
+        <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-2.000000, 44.000000)" fill="#fff" fill-rule="nonzero">
+                    <path
+                        d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
+                        opacity="0.100000001"></path>
+                    <path
+                        d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+                        opacity="0.100000001"></path>
+                    <path
+                        d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z"
+                        id="Path-4" opacity="0.200000003"></path>
+                </g>
+                <g transform="translate(-4.000000, 76.000000)" fill="#fff" fill-rule="nonzero">
+                    <path
+                        d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z">
+                    </path>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <section id="body" class="body bg-white flex flex-row flex-wrap text-purple-900 items-stretch">
+        <div class="map md:w-1/2 w-full  flex flex-col justify-center h-full mt-10 items-stretch">
+            <h1 class="text-3xl text-center items-stretch">Ubica nuestros eventos</h1>
+            <div id="mapContainer" class="p-3" style="height: 500px;"></div>
+        </div>
+        <div class="promo md:w-1/2 w-full mt-10 items-stretch">
+            <h1 class="text-3xl text-center">Nuestras promos</h1>
+            <sliderpromo inline-template>
+                <div class="flex flex-row items-center content-around">
+                    <div id="left" class="cursor-pointer w-1/24 md:w-1/12 text-right text-red-600 text-6xl"
+                        @click="to_left">
+                        <i class="zmdi zmdi-chevron-left" v-show="is_not_single_promo"></i>
+                    </div>
+
+                    <span :key="index" v-for="event,index in my_events" v-show="current_event==index"
+                        id="carousel__cell" class="flex flex-col w-full justify-center  w-22/24 md:w-10/12  ">
+                        <div id="image" class="flex flex-row justify-center  w-full">
+                            <div id="image" class="flex  justify-center" v-show="event.promo_image">
+                                <a v-if="event.promo_url" v-bind:href="event.promo_url" target="_blank"
+                                    class="p-0 m-0 text-center flex  justify-center">
+                                    <img :src="event.promo_image" alt="" style="height:auto;width:90%">
+                                </a>
+                                <img v-else :src="event.promo_image" alt="" style="height:auto;width:90%">
+                            </div>
+                        </div>
+                    </span>
+                    <div id="left" class="cursor-pointer w-1/24 md:w-1/12 text-left  text-red-600 text-6xl"
+                        @click="to_right">
+                        <i v-show="is_not_single_promo" class="zmdi zmdi-chevron-right"></i>
+                    </div>
+                </div>
+            </sliderpromo>
+        </div>
+    </section>
+
+    <section id="banners" class="banners flex flex-col items-center bg-white pt-24">
+        <rawpublicity inline-template>
+            <div class="flex flex-row sm:items-center w-full justify-center" @mouseover="clear_interval"
+                @mouseleave="set_interval" v-show="is_at_leat_one_banner">
+                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/64 text-right text-red-600 text-6xl"
+                    @click="to_left" v-show="is_not_single_banner">
+                    <i class="zmdi zmdi-chevron-left"></i>
+                </div>
+
+                <span :key="index" v-for="banner,index in my_banners" v-show="current_event==index" id="carousel__cell"
+                    class="flex flex-col  justify-center  w-60/64">
+                    <div id="image" class="flex flex-row justify-center  w-full animated fadeInUp fast">
+                        <div id="image" class="flex justify-center">
+                            <img :src="banner" alt="" style="height:auto;width:95%; max-height:450px;">
+                        </div>
+                    </div>
+                </span>
+
+                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/64 text-left  text-red-600 text-6xl"
+                    @click="to_right" v-show="is_not_single_banner">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </div>
+            </div>
+        </rawpublicity>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <script>
+
+        var all_events = [
+            {
+                "title": null,
+                "description": null,
+                "event_image": "/img/eventos/furgon evento.jpeg",
+                "event_url": null,
+                "promo_image": null,
+                "promo_url": null,
+                "location": {
+                    "google_maps": "https://goo.gl/maps/C7p2afhHf1mjarpL6",
+                    "address": "Aurelio venegas 315, Toluca Edo Mex",
+                    "lat": 19.287916,
+                    "lng": -99.667515
+                }
+            }, {
+                "title": null,
+                "description": null,
+                "event_image": "/img/eventos/panycirco2.jpg",
+                "event_url": null,
+                "promo_image": null,
+                "promo_url": null,
+                "location": {
+                    "google_maps": "https://goo.gl/maps/Z1TRLHzAcQP1EWNz7",
+                    "address": "Álvaro Obregón 160",
+                    "lat": 19.417631,
+                    "lng": - 99.162052
+                }
+            }, {
+                "title": null,
+                "description": null,
+                "event_image": "/img/eventos/pulques finos.jpg",
+                "event_url": null,
+                "promo_image": null,
+                "promo_url": null,
+                "location": {
+                    "google_maps": "https://goo.gl/maps/yDYABUZFApz9tRdeA",
+                    "address": "Insurgentes sur 226, Col. Roma",
+                    "lat": 19.419255,
+                    "lng": -99.164116
+                }
+            }]
+
+        var all_promos = [{
+            "promo_url": "https://www.facebook.com/panycircomxdf/photos/pb.466387663540673.-2207520000.1565073354./1167945100051589/?type=3&theater",
+            "promo_image": "/img/promos/panycircopromo1.jpg"
+        }]
+        var raw_publicity = []
+
+        let slider = Vue.component('slider', {
+            data() {
+                return {
+                    interval: null,
+                    current_event: 0,
+                    my_events: all_events
+                }
+            },
+            mounted() {
+                this.set_interval()
+            },
+            methods: {
+                set_interval() {
+                    console.log("set interval")
+                    this.interval = setInterval(this.to_left, 12800)
+                },
+                clear_interval() {
+                    console.log("CLear interval")
+                    clearInterval(this.interval)
+                },
+                to_right() {
+                    let current = this.current_event;
+                    current++
+                    if (current == this.my_events.length) {
+                        this.current_event = 0;
+                    } else {
+                        this.current_event++
+                    }
+                },
+                to_left() {
+                    let current = this.current_event;
+                    if (current == 0) {
+                        this.current_event = this.my_events.length - 1;
+                    } else {
+                        this.current_event--
+                    }
+                }
+            }
+        });
+
+        let sliderpromo = Vue.component('sliderpromo', {
+            data() {
+                return {
+                    current_event: 0,
+                    my_events: []
+                }
+            },
+            mounted() {
+                this.my_events = [...all_events.filter(myevent => myevent.promo_image != null), ...all_promos]
+            },
+            computed: {
+                is_not_single_promo() {
+                    return this.my_events.length > 1
+                }
+            },
+            methods: {
+                to_right() {
+                    let current = this.current_event;
+                    current++
+                    if (current == this.my_events.length) {
+                        this.current_event = 0;
+                    } else {
+                        this.current_event++
+                    }
+                },
+                to_left() {
+                    let current = this.current_event;
+                    if (current == 0) {
+                        this.current_event = this.my_events.length - 1;
+                    } else {
+                        this.current_event--
+                    }
+                }
+            }
+        });
+
+
+        let rawpublicity = Vue.component('rawpublicity', {
+            data() {
+                return {
+                    interval: null,
+                    current_event: 0,
+                    my_banners: raw_publicity
+                }
+            },
+            computed: {
+                is_not_single_banner() {
+                    return this.my_banners.length > 1;
+                },
+                is_at_leat_one_banner() {
+                    return this.my_banners.length > 0
+                }
+            },
+            mounted() {
+                this.set_interval()
+            },
+            methods: {
+                set_interval() {
+                    console.log("set interval")
+                    this.interval = setInterval(this.to_left, 5000)
+                },
+                clear_interval() {
+                    console.log("CLear interval")
+                    clearInterval(this.interval)
+                },
+                to_right() {
+                    let current = this.current_event;
+                    current++
+                    if (current == this.my_banners.length) {
+                        this.current_event = 0;
+                    } else {
+                        this.current_event++
+                    }
+                },
+                to_left() {
+                    let current = this.current_event;
+                    if (current == 0) {
+                        this.current_event = this.my_banners.length - 1;
+                    } else {
+                        this.current_event--
+                    }
+                }
+            }
+        });
+
+        new Vue({
+            el: "#slider",
+            components: { slider }
+        })
+
+        new Vue({
+            el: ".promo",
+            components: { sliderpromo }
+        })
+
+        new Vue({
+            el: "#banners",
+            components: { rawpublicity }
+        })
+    </script>
+    <script>
+
+        var scrollpos = window.scrollY;
+        var header = document.getElementById("header");
+        var navcontent = document.getElementById("nav-content");
+        var navaction = document.getElementById("navAction");
+        var brandname = document.getElementById("brandname");
+        var toToggle = document.querySelectorAll(".toggleColour");
+
+        document.addEventListener('scroll', function () {
+
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                header.classList.add("bg-white");
+                navaction.classList.remove("bg-white");
+                navaction.classList.add("gradient");
+                navaction.classList.remove("text-gray-800");
+                navaction.classList.add("text-blue-800");
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-gray-800");
+                    toToggle[i].classList.remove("text-white");
+                }
+                header.classList.add("shadow");
+                navcontent.classList.remove("bg-gray-100");
+                navcontent.classList.add("bg-white");
+            }
+            else {
+                header.classList.remove("bg-white");
+                navaction.classList.remove("gradient");
+                navaction.classList.add("bg-white");
+                navaction.classList.remove("text-white");
+                navaction.classList.add("text-gray-800");
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-white");
+                    toToggle[i].classList.remove("text-gray-800");
+                }
+
+                header.classList.remove("shadow");
+                navcontent.classList.remove("bg-white");
+                navcontent.classList.add("bg-gray-100");
+            }
+        });
+    </script>
+
+    <script>
+        /*Toggle dropdown list*/
+        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+        var navMenuDiv = document.getElementById("nav-content");
+        var navMenu = document.getElementById("nav-toggle");
+
+        document.onclick = check;
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                // click NOT on the menu
+                if (checkParent(target, navMenu)) {
+                    // click on the link
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else { navMenuDiv.classList.add("hidden"); }
+                } else {
+                    // click both outside link and outside menu, hide menu
+                    navMenuDiv.classList.add("hidden");
+                }
+            }
+
+        }
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) { return true; }
+                t = t.parentNode;
+            }
+            return false;
+        }
+    </script>
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript"></script>
+
+
+    <script>
+        function addMarkerToGroup(group, location, title, description) {
+            coords = { lat: location.lat, lng: location.lng };
+            marker = new H.map.Marker(coords, { icon: icon });
+            // add custom data to the marker
+            let title_marker = ""
+            if (title) {
+                title_marker = '<div class="bg-gray-100 text-center text-2xl" style="width:250px;" >' + title + '</div>'
+            }
+            title_marker += '<br><div class="bg-gray-100 text-center text-xl" style="width:250px;" >' + location.address + '</div>';
+            if (location.google_maps) {
+                title_marker += '<br><a href="' + location.google_maps + '" target="_blank" class="bg-gray-100 text-center text-2xl text-blue-600" style="width:250px;" >Más detalle</a>'
+            }
+            marker.setData(title_marker);
+            group.addObject(marker);
+        }
+
+        var platform = new H.service.Platform({
+            'apikey': 'R_mYohSgVAUY7Xj76d3-zC7SScpEsc3FnBknndbYR9w'
+        });
+        // Obtain the default map types from the platform object:
+        var defaultLayers = platform.createDefaultLayers();
+
+        // Instantiate (and display) a map object:
+        var map = new H.Map(
+            document.getElementById('mapContainer'),
+            defaultLayers.vector.normal.map,
+            {
+                zoom: 10,
+                center: { lat: 19.43, lng: -99.13 },
+                pixelRatio: window.devicePixelRatio || 1
+            });
+
+        var group = new H.map.Group();
+        map.addObject(group);
+
+
+
+        var events = all_events.filter(event => event.location != null)
+        console.log(events)
+        var icon = new H.map.Icon('img/marker.png');
+        var ui = H.ui.UI.createDefault(map, defaultLayers, 'es-ES');
+        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+
+        events.forEach(function (myevent) {
+            addMarkerToGroup(group, myevent.location, myevent.title, myevent.description)
+        });
+
+        group.addEventListener('tap', function (evt) {
+            // event target is the marker itself, group is a parent event target
+            // for all objects that it contains
+            var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+                // read custom data
+                content: evt.target.getData()
+            });
+            // show info bubble
+            ui.addBubble(bubble);
+        }, false);
+
+    </script>
+</body>
+
+</html>
