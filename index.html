@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
         integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
 </head>
 <style>
     body {
@@ -37,7 +37,8 @@
         border-color: rgb(79, 236, 92);
     } */
 
-    img {
+    img,
+    #mapContainer {
         -webkit-box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
         -moz-box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
         box-shadow: 1px 5px 7px 1px rgba(0, 134, 159, 0.87);
@@ -101,30 +102,31 @@
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
     <section class="text-center  w-full md:w-2/3 md:ml-auto md:mr-auto mt-24 md:mt-40 mb-2">
-        <h1 style="font-family: 'Abril Fatface', cursive;font-size: 1.75rem;">
-            Somos un canal de promoción para bandas alternaticas, manejamos mas de 40 bandas actualmente.
+        <h1 style="font-family: 'Fjalla One', cursive;font-size: 1.75rem;">
+            Somos un canal de promoción para bandas alternativas, manejamos mas de 40 bandas actualmente.
         </h1>
     </section>
     <section id="slider" class="bg-whitecarousel w-full mt-5 md:mt-10 mb-32">
         <slider inline-template>
             <div class="flex flex-row sm:items-center content-around" @mouseover="clear_interval"
                 @mouseleave="set_interval">
-                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/6 md:w-2/12 text-right text-red-600 text-6xl"
+                <div id="left"
+                    class="pt-10 md:p-1 md:p-1 md:mr-0 mr-5 cursor-pointer w-1/6 md:w-3/12 text-right text-red-600 text-6xl"
                     @click="to_left">
                     <i class="zmdi zmdi-chevron-left"></i>
                 </div>
 
                 <span :key="index" v-for="event,index in my_events" v-show="current_event==index" id="carousel__cell"
-                    class="flex flex-col  justify-center  w-4/6 md:w-8/12  ">
+                    class="flex flex-col  justify-center  w-4/6 md:w-6/12  ">
                     <div id="image" class="flex flex-row justify-center  w-full animated zoomIn fast">
                         <div id="image" class="flex  justify-center">
                             <a v-if="event.event_url" v-bind:href="event.event_url" target="_blank"
                                 class="p-0 m-0 text-center flex  justify-center">
                                 <img :src="event.event_image" alt=""
-                                    style="max-width:500px; max-height:700 px; height:auto; max-height: 550px;width: 100%;">
+                                    style="max-width:95%; max-height:700 px; height:auto; max-height: 550px;width: 100%;">
                             </a>
                             <img v-else :src="event.event_image" alt=""
-                                style="max-width:500px; max-height:700 px; height:auto; max-height: 550px;width: 100%;">
+                                style="max-width:95%; max-height:700 px; height:auto; max-height: 550px;width: 100%;">
                         </div>
                     </div>
 
@@ -140,7 +142,8 @@
                     </div>
                 </span>
 
-                <div id="left" class="pt-10 md:p-1 cursor-pointer w-1/6 md:w-2/12 text-left  text-red-600 text-6xl"
+                <div id="left"
+                    class="pt-10 md:p-1 md:ml-0 ml-5 cursor-pointer w-1/6 md:w-3/12 text-left  text-red-600 text-6xl"
                     @click="to_right">
                     <i class="zmdi zmdi-chevron-right"></i>
                 </div>
@@ -172,7 +175,7 @@
         </svg>
     </div>
 
-    <section id="body" class="body bg-white flex flex-row flex-wrap text-purple-900 items-stretch">
+    <section id="body" class="body bg-gray-200 flex flex-row flex-wrap text-purple-900 items-stretch">
         <div class="map md:w-1/2 w-full  flex flex-col justify-center h-full mt-10 items-stretch">
             <h1 class="text-3xl text-center items-stretch">Ubica nuestros eventos</h1>
             <div id="mapContainer" class="p-3" style="height: 500px;"></div>
@@ -207,7 +210,7 @@
         </div>
     </section>
 
-    <section id="banners" class="banners flex flex-col items-center bg-white pt-24">
+    <section id="banners" class="banners flex flex-col items-center bg-gray-200 pt-24">
         <rawpublicity inline-template>
             <div class="flex flex-row sm:items-center w-full justify-center" @mouseover="clear_interval"
                 @mouseleave="set_interval" v-show="is_at_leat_one_banner">
