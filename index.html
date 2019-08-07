@@ -23,7 +23,7 @@
 <style>
     body {
         background: rgb(37, 11, 84);
-        background: linear-gradient(90deg, rgb(0, 90, 147) 0%, rgba(17, 6, 35, 0.9164040616246498) 50%, rgba(37, 11, 84, 1) 100%);
+        background: linear-gradient(90deg, #005a93 0%, #110623ea 50%, #250b54 100%);
         background-size: 250vh;
     }
 
@@ -95,17 +95,20 @@
                     </li> -->
                 </ul>
                 <button id="navAction"
-                    class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-95">Conócenos</button>
+                    class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-95">
+                    <a href="nosotros.html">Conócenos</a></button>
             </div>
         </div>
 
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
+
     <section class="text-center  w-full md:w-2/3 md:ml-auto md:mr-auto mt-24 md:mt-40 mb-2">
         <h1 style="font-family: 'Fjalla One', cursive;font-size: 1.75rem;">
             Somos un canal de promoción para bandas alternativas, manejamos mas de 40 bandas actualmente.
         </h1>
     </section>
+
     <section id="slider" class="bg-whitecarousel w-full mt-5 md:mt-10 mb-32">
         <slider inline-template>
             <div class="flex flex-row sm:items-center content-around" @mouseover="clear_interval"
